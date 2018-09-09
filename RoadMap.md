@@ -32,7 +32,9 @@
   - The visual will throw the following error:
     - `"Can't contact visual server. Please make sure the visual server is running and configured correctly."`
   - Possibilities for the errors:
-    A) The Visual Server is not running on the localhost.
+    A) 
+61
+​The Visual Server is not running on the localhost.
     B) No appropriate certificates avaible to the client browser to execute and run the visual online.
   - Respective Solution: 
     A) Use the command: `pbiviz start`.
@@ -47,3 +49,14 @@
         - **Be cautious:** This command needs a valid/compatible certificate importor to import it into the browser                     application.
       - If in case, the above command doesn't work, you can install the certificate manually:
         - Import the certificate in the browser in the `Trusted Root Certification Authorities` directory.
+### Bypassing the security issues:
+  - Please follow these steps to bypass the security issue:
+    - `pbiviz start`
+    - Open https://localhost:8080/assets/status in browser application(Chromium, in this case)
+    - Open the Advanced
+    - Click the Proceed to localhost (unsafe)
+    - Back to the report with your debug visual
+    - Reload visual code
+    - Please let me know if it works for you well.
+    
+### Congratulations! you have perfectly setup the environment. You are ready to code in one of my favourite langauage, **TYPESCRIPT** !!
