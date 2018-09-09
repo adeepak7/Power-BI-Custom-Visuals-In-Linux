@@ -49,6 +49,7 @@
         - **Be cautious:** This command needs a valid/compatible certificate importor to import it into the browser                     application.
       - If in case, the above command doesn't work, you can install the certificate manually:
         - Import the certificate in the browser in the `Trusted Root Certification Authorities` directory.
+        
 ### Bypassing the security issues:
   - Please follow these steps to bypass the security issue:
     - `pbiviz start`
@@ -59,4 +60,13 @@
     - Reload visual code
     - Please let me know if it works for you well.
     
+### In case the above steps do not work, try installing root/CA certificates in UBUNTU:
+  - Execute the following commands to install the CA certificates: Given a CA certificate file <certificate-name>.crt, follow     these steps to install it on Ubuntu:
+      - Create a directory for extra CA certificates in **/usr/share/ca-certificates**:
+          - `sudo mkdir /usr/share/ca-certificates/extra`
+      - Copy the CA .crt file to this directory:
+          - `sudo cp <certificate-name>.crt /usr/share/ca-certificates/extra/<certificate-name>.crt`
+      - Let Ubuntu add the .crt file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:
+          - `sudo dpkg-reconfigure ca-certificates`
+  
 ### Congratulations! you have perfectly setup the environment. You are ready to code in one of my favourite langauage, **TYPESCRIPT** !!
