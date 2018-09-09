@@ -45,5 +45,5 @@
       - Install the certificate by executing the following command:
         - `pbiviz --install-cert`
         - **Be cautious:** This command needs a valid/compatible certificate importor to import it into the browser                     application.
-      - If in case, the above command doesn't work: You can install the certificate manually.
-        - 
+      - If in case, the above command doesn't work, you can install the certificate manually:
+        - Import the certificate in the browser in the `Trusted Root Certification Authorities` directory.
