@@ -27,3 +27,23 @@
     - You will see a Visual Server has started listening to the client at **port = 8080**
   - Go to [Power BI Online](https://powerbi.microsoft.com/en-us/landing/signin/) and **Enable the Developer Mode**
   - Load your visual, and you are ready to go...
+ 
+### Probable errors faced due to the Certificate issues:
+  - The visual will throw the following error:
+    - `"Can't contact visual server. Please make sure the visual server is running and configured correctly."`
+  - Possibilities for the errors:
+    A) The Visual Server is not running on the localhost.
+    B) No appropriate certificates avaible to the client browser to execute and run the visual online.
+  - Respective Solution: 
+    A) Use the command: `pbiviz start`.
+    B) Create and install certificates using following commands:
+      - Navigate to the project directory where the **pbiviz.json** file is present.
+      - Create the certificate by executing the following coomand:
+        - `pbiviz --create-cert`
+        - An **authorized certificate** and a **private key** key will be generated a specific location, depending on the               platform(UBUNTU 18.04.1, in this case) you are using.
+        - This certificate is issued by the localhost to the browser so that, the online client(**Power BI Online**, in our             case) can make use of it.
+      - Install the certificate by executing the following command:
+        - `pbiviz --install-cert`
+        - **Be cautious:** This command needs a valid/compatible certificate importor to import it into the browser                     application.
+      - If in case, the above command doesn't work: You can install the certificate manually.
+        - 
