@@ -2,4 +2,11 @@
 
   ### Note: The barchart is resizable
 
-  ![](https://github.com/adeepak7/Power-BI-Custom-Visuals-In-Linux/blob/master/usecases/simple_barchart/simple_barchart.png)
+  #### Static Data
+
+  ![](https://github.com/adeepak7/Power-BI-Custom-Visuals-In-Linux/blob/master/usecases/simple_barchart/simple_barchart_static_data.png)
+
+  #### Dynamic Data
+
+  ![](https://github.com/adeepak7/Power-BI-Custom-Visuals-In-Linux/blob/master/usecases/simple_barchart/simple_barchart_dynamic_data.png)
+
