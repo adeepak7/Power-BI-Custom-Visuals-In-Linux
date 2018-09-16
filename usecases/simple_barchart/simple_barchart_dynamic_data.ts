@@ -27,26 +27,6 @@
 module powerbi.extensibility.visual {
     "use strict";
 
-    /*let staticData = [
-            {
-                value: 10,
-                category: 'China'
-            },
-            {
-                value: 12,
-                category: 'USA'
-            },
-            {
-              value: 11,
-              category: 'India'
-            },
-            {
-                value: 13,
-                category: 'UK'
-            }
-        ];
-        */
-
     function visualTransform(options: VisualUpdateOptions, host: IVisualHost){
         // Ivisualhost is the interface provided by Power BI tools to call the
         // right methods internally.
@@ -98,56 +78,6 @@ module powerbi.extensibility.visual {
 
     export class Visual implements IVisual {
 
-        //Test application code:
-        /*
-            private target: HTMLElement;
-            private updateCount: number;
-            private settings: VisualSettings;
-            private textNode: Text;
-
-            constructor(options: VisualConstructorOptions) {
-                console.log('Visual constructor', options);
-                this.target = options.element;
-                this.updateCount = 0;
-                if (typeof document !== "undefined") {
-                    const new_p: HTMLElement = document.createElement("p");
-                    new_p.appendChild(document.createTextNode("Update count:"));
-                    const new_em: HTMLElement = document.createElement("em");
-                    this.textNode = document.createTextNode(this.updateCount.toString());
-                    new_em.appendChild(this.textNode);
-                    new_p.appendChild(new_em);
-                    this.target.appendChild(new_p);
-                }
-            }
-
-            public update(options: VisualUpdateOptions) {
-                console.log("Update method called");
-                this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
-                console.log('Visual update', options);
-                if (typeof this.textNode !== "undefined") {
-                    this.textNode.textContent = (this.updateCount++).toString();
-                }
-                let i : number = 0;
-                for(i=0;i<1000000;i++){
-                    this.textNode.textContent = (i).toString();
-                }
-
-                if(options.type == VisualUpdateType.ResizeEnd)
-                {
-                    this.textNode.textContent = (this.updateCount++).toString();
-                }
-            }
-
-            private static parseSettings(dataView: DataView): VisualSettings {
-                return VisualSettings.parse(dataView) as VisualSettings;
-            }
-
-
-            public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-                return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
-            }
-            */
-
             private svg : d3.Selection<SVGElement>;
             //barContainer will contain all the bars.
             private barContainer : d3.Selection<SVGElement>;
@@ -175,31 +105,14 @@ module powerbi.extensibility.visual {
                    height: height
                 });
 
-                //Code to append a single rectangle in the SVG
-                // let rect = this.svg
-                //     .append('rect')
-                //     .attr({
-                //         width: 50,
-                //         height: 100,
-                //         fill: 'red'
-                //     });
 
                 let yscale = d3.scale.linear()
                     .domain([0, dynamicData.dataMax])//input range
                     .range([height, 0]); //output range
 
-                /*let xscale = d3.scale.ordinal()// ordinal because the data on the x axis is text and not number.
-                    .domain(staticData.map(dataPoint => dataPoint.category))
-                    .rangeRoundBands([0, width], 0.1, 0.2);
-                */
                 let xscale = d3.scale.ordinal()// ordinal because the data on the x axis is text and not number.
                     .domain(dynamicData.dataPoints.map(dataPoint => dataPoint.category))
                     .rangeRoundBands([0, width], 0.1, 0.2);
-
-                /*let bars = this.barContainer
-                    .selectAll('.bar')
-                    .data(staticData);
-                */
 
                 let bars = this.barContainer
                     .selectAll('.bar')
@@ -212,9 +125,6 @@ module powerbi.extensibility.visual {
 
                 bars.attr({
                    width: xscale.rangeBand(),
-                   /*height: (data) => {
-                    return data.value * 3;
-                   }*/
                    height: data => height - yscale(<number>data.value),
                     //  yscale(number) will return a value using linear
                     // equation and this value is substracted from height.
@@ -223,7 +133,7 @@ module powerbi.extensibility.visual {
                     // bars.attr.height.
                     x : data=> xscale(data.category),
                     y : data => yscale(<number>data.value)
-                    //y : 0
+
                 });
 
                 bars.exit().remove();
