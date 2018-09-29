@@ -1,0 +1,28 @@
+{
+  "visual": {
+    "name": "barchart",
+    "displayName": "barchart",
+    "guid": "barchart2BBD186F586E453C8D3583B108ACDC0C",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "",
+    "supportUrl": "",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "2.1.0",
+  "author": {
+    "name": "Deepak Tatyaji Ahire",
+    "email": "detatyaj@microsoft.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [
+    "node_modules/powerbi-visuals-utils-dataviewutils/lib/index.js",
+    "node_modules/d3/d3.js"
+  ],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": "dependencies.json",
+  "stringResources": []
+}
