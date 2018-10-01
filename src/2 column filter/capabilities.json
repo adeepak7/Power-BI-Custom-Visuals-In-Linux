@@ -1,0 +1,81 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Key 1",
+            "name": "Key 1",
+            "kind": "Grouping",
+            "requiredTypes": [
+                {
+                  "text": true
+                },
+                {
+                  "numeric": true
+                },
+                {
+                  "integer": true
+                }
+            ],
+            "preferredTypes": [
+                {
+                  "text": true
+                }
+            ]
+        },
+        {
+          "displayName": "Key 2",
+          "name": "Key 2",
+          "kind": "Grouping",
+          "requiredTypes": [
+            {
+              "text": true
+            },
+            {
+              "numeric": true
+            },
+            {
+              "integer": true
+            }
+          ],
+          "preferredTypes": [
+            {
+              "text": true
+            }
+          ]
+        }
+    ],
+    "objects": {
+        "general": {
+            "displayName": "General",
+            "properties": {
+              "filter": {
+                "type": {
+                  "filter": true
+                }
+              },
+              "searchText": {
+                "type": {
+                  "text": true
+                }
+              }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "field": {
+                        "max": 1
+                    }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "field"
+                    }
+                }
+            }
+        }
+    ]
+}
